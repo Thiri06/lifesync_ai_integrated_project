@@ -47,6 +47,53 @@
             @endif
         </div>
 
+         <!-- Age -->
+        <div>
+            <x-input-label for="age" :value="__('Age')" />
+            <x-text-input id="age" name="age" type="number" class="mt-1 block w-full" :value="old('age', $user->age)" />
+            <x-input-error class="mt-2" :messages="$errors->get('age')" />
+        </div>
+
+        <!-- Gender -->
+        <div>
+            <x-input-label for="gender" :value="__('Gender')" />
+            <select id="gender" name="gender" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                <option value="">Select Gender</option>
+                <option value="male" {{ old('gender', $user->gender) === 'male' ? 'selected' : '' }}>Male</option>
+                <option value="female" {{ old('gender', $user->gender) === 'female' ? 'selected' : '' }}>Female</option>
+                <option value="other" {{ old('gender', $user->gender) === 'other' ? 'selected' : '' }}>Other</option>
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('gender')" />
+        </div>
+
+        <!-- Height -->
+        <div>
+            <x-input-label for="height" :value="__('Height (cm)')" />
+            <x-text-input id="height" name="height" type="number" step="0.01" class="mt-1 block w-full" :value="old('height', $user->height)" />
+            <x-input-error class="mt-2" :messages="$errors->get('height')" />
+        </div>
+
+        <!-- Weight -->
+        <div>
+            <x-input-label for="weight" :value="__('Weight (kg)')" />
+            <x-text-input id="weight" name="weight" type="number" step="0.01" class="mt-1 block w-full" :value="old('weight', $user->weight)" />
+            <x-input-error class="mt-2" :messages="$errors->get('weight')" />
+        </div>
+
+        <!-- Dietary Preferences -->
+        <div>
+            <x-input-label for="dietary_preferences" :value="__('Dietary Preferences')" />
+            <textarea id="dietary_preferences" name="dietary_preferences" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{ old('dietary_preferences', $user->dietary_preferences) }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('dietary_preferences')" />
+        </div>
+
+        <!-- Health Concerns -->
+        <div>
+            <x-input-label for="health_concerns" :value="__('Health Concerns')" />
+            <textarea id="health_concerns" name="health_concerns" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{ old('health_concerns', $user->health_concerns) }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('health_concerns')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
