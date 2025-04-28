@@ -13,6 +13,7 @@ class FitnessPlanResult extends Model
         'user_id',
         'fitness_profile_id',
         'ai_response',
+        'processed_response',
     ];
 
     /**

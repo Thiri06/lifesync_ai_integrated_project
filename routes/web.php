@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FitnessPlanController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,7 +22,30 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Fitness Plan Routes
     Route::get('/fitness', function () {
-        return view('fitness-plan-result');
+        $user = Auth::user();
+
+        // Get the user's latest fitness profile and result
+        $fitnessProfile = App\Models\FitnessProfile::where('user_id', $user->id)
+            ->latest()
+            ->first();
+
+        if (!$fitnessProfile) {
+            return redirect()->route('dashboard')
+                ->with('info', 'You haven\'t created a fitness plan yet. Please generate one first.');
+        }
+
+        $fitnessPlanResult = App\Models\FitnessPlanResult::where('fitness_profile_id', $fitnessProfile->id)
+            ->first();
+
+        if (!$fitnessPlanResult) {
+            return redirect()->route('dashboard')
+                ->with('error', 'Your fitness plan result was not found. Please generate a new plan.');
+        }
+
+        return view('fitness-plan-result', [
+            'fitnessProfile' => $fitnessProfile,
+            'fitnessPlanResult' => $fitnessPlanResult,
+        ]);
     })->name('fitness.index');
 
     // Placeholder routes for nutrition and mental wellness

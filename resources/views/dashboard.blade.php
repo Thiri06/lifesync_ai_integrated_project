@@ -18,8 +18,27 @@
                 </div>
             </div>
 
+             @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @php
+                $hasExistingPlan = Auth::user()->fitnessProfiles()->exists();
+            @endphp
+
+            @if($hasExistingPlan)
+                <div class="mt-4">
+                    <a href="{{ route('fitness.index') }}" class="inline-flex items-center px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition">
+                        <i class="fas fa-eye mr-2"></i> View Your Latest Fitness Plan
+                    </a>
+                </div>
+            @endif
+
             <!-- Dashboard Tabs -->
-            <div class="mb-6" x-data="{ activeTab: 'fitness' }">
+            <div class="mt-5 mb-6" x-data="{ activeTab: 'fitness' }">
                 <div class="rounded-lg shadow-sm overflow-hidden form-section">
                     <div class="flex border-b">
                         <button @click="activeTab = 'fitness'" :class="{ 'border-primary text-primary': activeTab === 'fitness', 'border-transparent text-gray-500': activeTab !== 'fitness' }" class="flex-1 py-4 px-6 text-center font-medium border-b-2 transition-all duration-200 focus:outline-none">
