@@ -111,7 +111,11 @@
     <div class="plan-section">
         <h2>📝 Your AI-Generated Plan</h2>
         <div class="plan-content">
-            {{ $fitnessPlanResult->ai_response }}
+            @if(isset($formattedResponse))
+                {!! $formattedResponse !!}
+            @else
+                {!! nl2br(e($fitnessPlanResult->ai_response)) !!}
+            @endif
         </div>
     </div>
 

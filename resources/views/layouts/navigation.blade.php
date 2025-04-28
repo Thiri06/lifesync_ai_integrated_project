@@ -13,7 +13,7 @@
                             <path d="M24 9C24 10.1046 23.1046 11 22 11C20.8954 11 20 10.1046 20 9C20 7.89543 20.8954 7 22 7C23.1046 7 24 7.89543 24 9Z" fill="#d959e5"/>
                             <path d="M12 23C12 24.1046 11.1046 25 10 25C8.89543 25 8 24.1046 8 23C8 21.8954 8.89543 21 10 21C11.1046 21 12 21.8954 12 23Z" fill="#d38ded"/>
                         </svg>
-                        <span style="font-weight: 800; background: linear-gradient(135deg, #592fde 0%, #d959e5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LifeSync</span>
+                        <span style="font-weight: 800; font-size: 1.5rem; background: linear-gradient(135deg, #592fde 0%, #d959e5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LifeSync</span>
                     </a>
                 </div>
 
@@ -24,16 +24,9 @@
                     </x-nav-link>
                     
                     <x-nav-link :href="route('fitness.index')" :active="request()->routeIs('fitness.*')" class="lifesync-nav-link">
-                        <i class="fas fa-dumbbell mr-1"></i> {{ __('Fitness Plan') }}
+                        <i class="fas fa-dumbbell mr-1"></i> {{ __('Your Personalized Plan') }}
                     </x-nav-link>
-                    
-                    <x-nav-link :href="route('nutrition.index')" :active="request()->routeIs('nutrition.*')" class="lifesync-nav-link">
-                        <i class="fas fa-apple-alt mr-1"></i> {{ __('Nutrition Plan') }}
-                    </x-nav-link>
-
-                    <x-nav-link :href="route('mental.index')" :active="request()->routeIs('mental.*')" class="lifesync-nav-link">
-                        <i class="fas fa-brain mr-1"></i> {{ __('Mental Wellness') }}
-                    </x-nav-link>
+            
                 </div>
             </div>
 

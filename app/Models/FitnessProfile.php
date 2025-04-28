@@ -17,6 +17,13 @@ class FitnessProfile extends Model
         'workout_environment',
         'workout_time',
         'workout_frequency',
+        // New fields
+        'nutrition_goal',
+        'foods_to_avoid',
+        'mental_goal',
+        'stress_level',
+        'sleep_quality',
+        'wellness_methods',
     ];
 
     /**
